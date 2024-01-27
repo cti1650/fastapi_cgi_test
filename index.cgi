@@ -1,5 +1,10 @@
 #!../../../.linuxbrew/bin/python3.9
-from wsgiref.handlers import CGIHandler
+import a2wsgi
+import wsgiref.handlers
+import os
 from hello import app
 
-CGIHandler().run(app)
+os.environ.setdefault("PATH_INFO", "")
+
+wsgi_app = a2wsgi.ASGIMiddleware(app)
+wsgiref.handlers.CGIHandler().run(wsgi_app)
