@@ -2,7 +2,7 @@
 import a2wsgi
 import wsgiref.handlers
 import os
-from hello import app
+from app.main import app
 
 os.environ.setdefault("PATH_INFO", "")
 
